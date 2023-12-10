@@ -38,13 +38,15 @@ const styles = StyleSheet.create({
         backgroundColor:'red',
         borderRadius: 30,
         padding: 18,
-        marginTop: 60
+        marginTop: 40,
+        width: 200,
     },
 
     buttonText: {
         color: 'white',
         fontSize: 22,
-        fontFamily: 'DamascusBold'
+        fontFamily: 'DamascusBold',
+        textAlign: 'center'
     }
 })
 
