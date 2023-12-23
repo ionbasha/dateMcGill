@@ -4,56 +4,66 @@ import { RadioButton } from 'react-native-paper';
 
 const CreateAccount = () => {
 
-    const [firstName, setfirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [genderAm, setGenderAm] = useState('');
-    const [genderShow, setGenderShow] = useState(''); // Something for gender
-    const [age, setAge] = useState('');
-    const [email, setEmail] = useState('');
-    const [major, setMajor] = useState('');
-    const [password, setPassword] = useState('');
-    const [somethingToKnow, setSomethingToKnow] = useState('');
+   const [userData, setUserData] = useState({
+      firstName: '',
+      lastName: '',
+      genderAm: '',
+      genderShow: '',
+      age: '',
+      email: '',
+      major: '',
+      password: '',
+      somethingToKnow: ''
+   })
+
+    const handlePress = () => {
+      console.log(userData)
+      console.log(
+         "Hi, Im " + userData.firstName + "\n" +
+         "and I am a " + userData.genderAm + " looking for " + userData.genderShow
+      )
+    }
 
     return (
       <View style={styles.screenDetails}>
          <TextInput 
             id = "firstName"
-            value={firstName}
+            value={userData.firstName}
             style={styles.inputs} 
             placeholder = "First name" 
             placeholderTextColor = "grey"
             spellCheck={false}
             autoCorrect={false}
-            onChangeText={text => setfirstName(text)}/>
+            onChangeText={text => setUserData({...userData, firstName: text})}/>
          <TextInput 
             id = "lastName"
-            value={lastName}
+            value={userData.lastName}
             style={styles.inputs} 
             placeholder = "Last name" 
             placeholderTextColor = "grey" 
             spellCheck={false}
             autoCorrect={false}
-            onChangeText={text => setLastName(text)}/>
+            onChangeText={text => setUserData({...userData, lastName: text})}/>
          <Text style={{marginBottom: 5, fontFamily: 'DamascusBold'}}>I am:</Text>
          <Text>Male           Female          Other</Text>
          <View style={{gap: 42}} flexDirection = 'row'>
             <RadioButton.Android 
             color='limegreen'
-            value = 'M'
-            status = { genderAm === 'M' ? 'checked' : 'unchecked' }
-            onPress = {() => setGenderAm('M')}
+            value = {userData.genderAm}
+            status = { userData.genderAm === 'M' ? 'checked' : 'unchecked' }
+            onPress={() => setUserData({...userData, genderAm: 'M'})}
             />
             <RadioButton.Android 
             color='limegreen'
-            value = 'F'
-            status = { genderAm === 'F' ? 'checked' : 'unchecked' }
-            onPress = {() => setGenderAm('F')}
+            value = {userData.genderAm}
+            status = { userData.genderAm === 'F' ? 'checked' : 'unchecked' }
+            onPress={() => setUserData({...userData, genderAm: 'F'})}
             />
             <RadioButton.Android 
             color='limegreen'
-            value = 'O'
-            status = { genderAm === 'O' ? 'checked' : 'unchecked' }
-            onPress = {() => setGenderAm('O')}
+            value = {userData.genderAm}
+            status = { userData.genderAm === 'O' ? 'checked' : 'unchecked' }
+            onPress={() => setUserData({...userData, genderAm: 'O'})}
             />
          </View>
          <Text style={{margin: 5, fontFamily: 'DamascusBold'}}>Show me:</Text>
@@ -62,68 +72,65 @@ const CreateAccount = () => {
             <RadioButton.Android 
             color='limegreen'
             value = 'M'
-            status = { genderShow === 'M' ? 'checked' : 'unchecked' }
-            onPress = {() => setGenderShow('M')}
+            status = { userData.genderShow === 'M' ? 'checked' : 'unchecked' }
+            onPress={() => setUserData({...userData, genderShow: 'M'})}
             />
             <RadioButton.Android 
             color='limegreen'
             value = 'F'
-            status = { genderShow === 'F' ? 'checked' : 'unchecked' }
-            onPress = {() => setGenderShow('F')}
+            status = { userData.genderShow === 'F' ? 'checked' : 'unchecked' }
+            onPress={() => setUserData({...userData, genderShow: 'F'})}
             />
             <RadioButton.Android 
             color='limegreen'
             value = 'O'
-            status = { genderShow === 'O' ? 'checked' : 'unchecked' }
-            onPress = {() => setGenderShow('O')}
+            status = { userData.genderShow === 'O' ? 'checked' : 'unchecked' }
+            onPress={() => setUserData({...userData, genderShow: 'O'})}
             />
          </View>
          <TextInput 
             id = "age"
-            value={age}
+            value={userData.age}
             style={styles.inputs} 
             placeholder = "Age" 
             placeholderTextColor = "grey"
-            onChangeText={text => setAge(text)}/>
+            onChangeText={text => setUserData({...userData, age: text})} />
          <TextInput style={styles.inputs} 
             id = "email"
-            value={email}
+            value={userData.email}
             placeholder = "Email" 
             placeholderTextColor = "grey" 
             autoCapitalize = "none"
             spellCheck={false}
             autoCorrect={false}
-            onChangeText={text => setEmail(text)}/>
+            onChangeText={text => setUserData({...userData, email: text})} />
          <TextInput style={styles.inputs} 
             id = "password"
-            value={password}
+            value={userData.password}
             placeholder = "Password" 
             placeholderTextColor = "grey" 
             autoCapitalize = "none"
             secureTextEntry={true}
             spellCheck={false}
             autoCorrect={false}
-            onChangeText={text => setPassword(text)}/>
+            onChangeText={text => setUserData({...userData, password: text})} />
          <TextInput 
             id = "major"
-            value={major}
+            value={userData.major}
             style={styles.inputs} 
             placeholder = "Major" 
             placeholderTextColor = "grey"
-            onChangeText={text => setMajor(text)}/>
+            onChangeText={text => setUserData({...userData, major: text})} />
          <TextInput style={styles.inputs} 
             id = "somethingToKnow"
-            value={somethingToKnow}
+            value={userData.somethingToKnow}
             placeholder = "Something to know about me is..." 
             placeholderTextColor = "grey" 
             autoCapitalize = "none"
             spellCheck={false}
             autoCorrect={false}
-            onChangeText={text => setSomethingToKnow(text)}/>
-         <TouchableOpacity style={styles.signUpButton} activeOpacity={0.7} onPress={() => console.log(
-            "I am: " + genderAm + "\n" +
-            "Show me: " + genderShow
-         )}>
+            onChangeText={text => setUserData({...userData, somethingToKnow: text})} />
+         <TouchableOpacity style={styles.signUpButton} activeOpacity={0.7} onPress={handlePress}>
             <Text style={styles.signUpButtonText}>Sign Up</Text>
          </TouchableOpacity>
       </View>
@@ -143,13 +150,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: 'white',
     textAlign: 'center',
-    margin: 13,
+    margin: 10,
   },
   signUpButton: {
     backgroundColor:'limegreen',
     borderRadius: 30,
     padding: 12,
-    marginTop: 5,
+    marginTop: 50,
     width: 120,
   },
   signUpButtonText: {
